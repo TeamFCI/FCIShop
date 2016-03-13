@@ -30,6 +30,7 @@ public class Haendler implements Listener {
 	public void spawn(Location loc, String name, String Skin){
 		NPC npc = NPCLib.spawnNPC(loc, name, Skin);
 		npc.setShownInList(false);
+		NPC npc = NPCLib.getNPC(arg0)
 	}
 	
 	public void tphere(Location loc,NPC npc){
@@ -55,14 +56,25 @@ public class Haendler implements Listener {
 			lore.add("Hier kannst du Blutsplitter");
 			lore.add("gegen Upgrades eintauschen.");
 			magemeta.setLore(lore);
+			lore.clear();
 			magemeta.addEnchant(Enchantment.WATER_WORKER, 10, true);
 			magemeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 			Mage.setItemMeta(magemeta);
+			ItemStack Splitter = new ItemStack(Material.PRISMARINE_SHARD);
+			ItemMeta Splittermeta = Splitter.getItemMeta();
+			Splittermeta.setDisplayName("Splitter");
+			lore.add("Shop für CombatItems");
+			lore.add("Hier kannst du Blutsplitter");
+			lore.add("gegen CombatItems eintauschen.");
+			magemeta.setLore(lore);
+			lore.clear();
 			for (int i = 0; i < 9; i++) {
 				inv.setItem(i, LEER);
 			}
 			// 00 01 02 #M 04 #S 06 07 08
 			inv.setItem(3, Mage);
+			inv.setItem(5, Splitter);
+			p.openInventory(inv);
 		}
 	}
 	

@@ -1,4 +1,4 @@
-package de.teamfci.fcishop;
+package de.teamfci.fcishop.commands;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -13,6 +13,13 @@ public class FCISCommand implements CommandExecutor {
 		if(sender instanceof Player){
 			Player p = (Player) sender;
 			p.sendMessage("§f[§bFCIShop§f] Dies ist das Shopsystem von FCI");
+			if(p.hasPermission("fci.fci")){
+				p.sendMessage("§f[§bFCIShop§f] /shop create [Name] [SkinOwner]");
+				p.sendMessage("§f[§bFCIShop§f] /shop tphere [ID]");
+				p.sendMessage("§f[§bFCIShop§f] /shop tpto [ID]");
+			}
+			
+			
 		} else {
 			sender.sendMessage("Du musst ein Spieler sein um dies auszuführen");
 		}

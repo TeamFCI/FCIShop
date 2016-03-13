@@ -1,9 +1,9 @@
 package de.teamfci.fcishop;
 
-import org.bukkit.craftbukkit.v1_8_R3.help.HelpTopicAmendment;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import de.teamfci.fcishop.commands.FCISCommand;
 import de.teamfci.fcishop.entity.Haendler;
 
 public class FCIShop extends JavaPlugin {

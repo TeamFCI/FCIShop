@@ -57,7 +57,7 @@ public class Haendler implements Listener {
 			magemeta.setLore(lore);
 			magemeta.addEnchant(Enchantment.WATER_WORKER, 10, true);
 			magemeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-			
+			Mage.setItemMeta(magemeta);
 			for (int i = 0; i < 9; i++) {
 				inv.setItem(i, LEER);
 			}

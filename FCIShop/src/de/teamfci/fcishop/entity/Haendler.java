@@ -1,11 +1,9 @@
 package de.teamfci.fcishop.entity;
 
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -27,10 +25,11 @@ public class Haendler implements Listener {
 	private List<String> lore;
 
 	@SuppressWarnings("deprecation")
-	public void spawn(Location loc, String name, String Skin){
+	public static void spawn(Location loc, String name, String Skin){
 		NPC npc = NPCLib.spawnNPC(loc, name, Skin);
 		npc.setShownInList(false);
-		NPC npc = NPCLib.getNPC(arg0)
+		npc.setGameMode(GameMode.SURVIVAL);
+		npc.setGravity(true);
 	}
 	
 	public void tphere(Location loc,NPC npc){

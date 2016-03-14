@@ -1,80 +1,41 @@
 package de.teamfci.fcishop.entity;
 
-import java.util.List;
-
 import org.bukkit.Bukkit;
-import org.bukkit.GameMode;
 import org.bukkit.Location;
-import org.bukkit.Material;
-import org.bukkit.enchantments.Enchantment;
+import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.inventory.Inventory;
-import org.bukkit.inventory.ItemFlag;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.event.entity.EntityInteractEvent;
 
-import de.inventivegames.npc.NPC;
-import de.inventivegames.npc.NPCLib;
-import de.inventivegames.npc.event.NPCInteractEvent;
-import de.inventivegames.npc.event.NPCInteractEvent.InteractType;
+import net.techcable.npclib.NPC;
+import net.techcable.npclib.NPCLib;
+import net.techcable.npclib.NPCRegistry;
 
 public class Haendler implements Listener {
 
-	private List<String> lore;
 
-	@SuppressWarnings("deprecation")
 	public static void spawn(Location loc, String name, String Skin){
-		NPC npc = NPCLib.spawnNPC(loc, name, Skin);
-		npc.setShownInList(false);
-		npc.setGameMode(GameMode.SURVIVAL);
-		npc.setGravity(true);
+		NPCRegistry registry = NPCLib. getNPCRegistry(Bukkit.getPluginManager().getPlugin("FCIShop"));	
+		NPC npc = registry. createNPC(EntityType.PLAYER, name);
+		npc.setProtected(true);
+		npc.setSkin(Skin);
+		npc.spawn(loc);
 	}
 	
 	public void tphere(Location loc,NPC npc){
-		npc.teleport(loc);
+		npc.getEntity().teleport(loc);
 	}
 	public void tpto(Player p, NPC npc){
-		p.teleport(npc.getLocation());
+		p.teleport(npc.getEntity().getLocation());
 	}
+	public void delete(NPC npc){
+		npc.despawn();
+	}
+	
 	
 	@EventHandler
-	public void onInteract(NPCInteractEvent e){
-		NPC npc = e.getNPC();
-		Player p = e.getPlayer();
-		InteractType t = e.getType();
-		String npcname = npc.getName();
-		if(t.equals(InteractType.LEFT_CLICK)){
-			Inventory inv = Bukkit.createInventory(null, 9, npcname);
-			ItemStack LEER = new ItemStack(Material.STAINED_GLASS_PANE,1,(short)7);
-			ItemStack Mage = new ItemStack(Material.STICK);
-			ItemMeta magemeta = Mage.getItemMeta();
-			magemeta.setDisplayName("Magier");
-			lore.add("Shop für die Magierklasse");
-			lore.add("Hier kannst du Blutsplitter");
-			lore.add("gegen Upgrades eintauschen.");
-			magemeta.setLore(lore);
-			lore.clear();
-			magemeta.addEnchant(Enchantment.WATER_WORKER, 10, true);
-			magemeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-			Mage.setItemMeta(magemeta);
-			ItemStack Splitter = new ItemStack(Material.PRISMARINE_SHARD);
-			ItemMeta Splittermeta = Splitter.getItemMeta();
-			Splittermeta.setDisplayName("Splitter");
-			lore.add("Shop für CombatItems");
-			lore.add("Hier kannst du Blutsplitter");
-			lore.add("gegen CombatItems eintauschen.");
-			magemeta.setLore(lore);
-			lore.clear();
-			for (int i = 0; i < 9; i++) {
-				inv.setItem(i, LEER);
-			}
-			// 00 01 02 #M 04 #S 06 07 08
-			inv.setItem(3, Mage);
-			inv.setItem(5, Splitter);
-			p.openInventory(inv);
-		}
+	public void onInteract(EntityInteractEvent e){
+		
 	}
-	
 }

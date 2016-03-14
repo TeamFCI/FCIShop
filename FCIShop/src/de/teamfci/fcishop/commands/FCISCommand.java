@@ -3,7 +3,6 @@ package de.teamfci.fcishop.commands;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
-import org.bukkit.craftbukkit.v1_8_R3.help.HelpTopicAmendment;
 import org.bukkit.entity.Player;
 
 import de.teamfci.fcishop.entity.Haendler;
@@ -18,9 +17,9 @@ public class FCISCommand implements CommandExecutor {
 			p.sendMessage("§f[§bFCIShop§f] Dies ist das Shopsystem von FCI");
 			if (p.hasPermission("fci.fci")) {
 				if (args.length == 0) {
-					p.sendMessage("§f[§bFCIShop§f] /shop create [Name] [SkinOwner]");
-					p.sendMessage("§f[§bFCIShop§f] /shop tphere [ID]");
-					p.sendMessage("§f[§bFCIShop§f] /shop tpto [ID]");
+					p.sendMessage("§f[§bFCIShop§f] /fcis create [Name] [SkinOwner]");
+					p.sendMessage("§f[§bFCIShop§f] /fcis tphere [ID]");
+					p.sendMessage("§f[§bFCIShop§f] /fcis tpto [ID]");
 				}
 				if(args.length == 3){
 					if(args[0].equalsIgnoreCase("create")){

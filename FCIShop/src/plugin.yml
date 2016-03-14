@@ -1,0 +1,7 @@
+name: FCIShop
+version: 1.0
+author: Filip Zocktan & HappyHappyBoy
+main: de.teamfci.fcishop.FCIShop
+commands:
+  fcis:
+    description: Zeigt Plugininfo an/shopverwaltung.

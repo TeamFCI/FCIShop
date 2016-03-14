@@ -12,10 +12,6 @@
 			<attribute name="javadoc_location" value="file:/C:/Eclipse%20Spigot%20APIs/EffectLib%20Javadoc/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/NPCLib_v1.8.0.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="http://docs.inventivetalent.org/npclib/"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="lib" path="lib/NPCLib.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

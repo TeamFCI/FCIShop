@@ -29,7 +29,8 @@ public class Haendler implements Listener {
 
 	public static void spawn(Location loc, String name, String Skin){
 	    NPCRegistry registry = CitizensAPI.getNPCRegistry();
-	    NPC npc = registry.createNPC(EntityType.PLAYER, "MyNPC");
+	    NPC npc = registry.createNPC(EntityType.PLAYER, name);
+	    npc.setProtected(true);
 	    npc.spawn(loc);
 	}
 

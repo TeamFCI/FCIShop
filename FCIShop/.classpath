@@ -12,6 +12,6 @@
 			<attribute name="javadoc_location" value="file:/C:/Eclipse%20Spigot%20APIs/EffectLib%20Javadoc/"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/NPCLib.jar"/>
+	<classpathentry kind="lib" path="C:/Eclipse Spigot APIs/Citizens.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

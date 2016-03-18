@@ -12,20 +12,25 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
-import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import de.teamfci.dataprovider.dataprovider;
 import de.teamfci.fcishop.FCIShop;
 import net.citizensnpcs.api.CitizensAPI;
+import net.citizensnpcs.api.event.DespawnReason;
 import net.citizensnpcs.api.npc.NPC;
 import net.citizensnpcs.api.npc.NPCRegistry;
 
 public class Haendler implements Listener {
-
+	
+	private List<String> lore = new LinkedList<String>();
+	Inventory inv = Bukkit.createInventory(null, 9);
+	
 	@EventHandler
 	public void onInteract(PlayerInteractEntityEvent ev) {
 		Player p = ev.getPlayer();
@@ -33,45 +38,153 @@ public class Haendler implements Listener {
 		NPCRegistry registry = CitizensAPI.getNPCRegistry();
 		if (registry.isNPC(e)) {
 			NPC npc = registry.getNPC(e);
-			if (FCIShop.selectionmode.get(p) == true) {
+			if(p.getItemInHand().getType().equals(Material.BLAZE_POWDER)){
 				FCIShop.selection.put(p, npc);
+				p.sendMessage("Du hast den NPC " + npc.getName() + " ausgewählt.");
 			} else {
 				// 00 01 02 #M 04 #S 06 07 08
-				Inventory inv = Bukkit.createInventory(null, 9);
+				inv = Bukkit.createInventory(null, 9, "Splitter-Shop");
 				ItemStack Mage = new ItemStack(Material.PRISMARINE_SHARD);
 				ItemMeta magemeta = Mage.getItemMeta();
 				magemeta.setDisplayName("Magier");
-				magemeta.addEnchant(Enchantment.WATER_WORKER, 10, true);
-				magemeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				lore.add("§aFortress§8-§aCombat§8-§aShop");
 				lore.add("§9§m------------------------------");
 				lore.add("§6Shop für den Magier.");
 				lore.add("§6Hier kannst du Rang-Upgrades kaufen");
 				magemeta.setLore(lore);
 				lore.clear();
+				Mage.setItemMeta(magemeta);
 				inv.setItem(3, Mage);
+				ItemStack Splitter = new ItemStack(Material.QUARTZ);
+				ItemMeta splitmeta = Mage.getItemMeta();
+				splitmeta.setDisplayName("Splittershop");
+				lore.add("§aFortress§8-§aCombat§8-§aShop");
+				lore.add("§9§m------------------------------");
+				lore.add("§6Shop für Splitter.");
+				lore.add("§6Hier kannst du FCI-Items kaufen");
+				splitmeta.setLore(lore);
+				lore.clear();
+				Splitter.setItemMeta(splitmeta);
+				inv.setItem(5, Splitter);
+				p.openInventory(inv);
 			}
 		}
 	}
+	//00 01 02 03 04 05 06 07 08
+	//09 10 R1 R2 R3 R4 R5 16 17
+	@EventHandler
+	public void onClick(InventoryClickEvent ev){
+		Inventory clicked = ev.getClickedInventory();
+		Player p = (Player) ev.getWhoClicked();
+		if(clicked.equals(inv)){
+			if(ev.getSlot() == 3){
+				inv = Bukkit.createInventory(null, 18, "Upgradeshop Mage");
+				ItemStack Mage = new ItemStack(Material.PRISMARINE_SHARD);
+				ItemMeta magemeta = Mage.getItemMeta();
+				magemeta.setDisplayName("Magier");
+				lore.add("§aFortress§8-§aCombat§8-§aShop");
+				lore.add("§9§m------------------------------");
+				lore.add("§6Shop für den Magier.");
+				lore.add("§6Hier kannst du Rang-Upgrades kaufen");
+				magemeta.setLore(lore);
+				magemeta.addEnchant(Enchantment.WATER_WORKER, 10, true);
+				magemeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+				lore.clear();
+				Mage.setItemMeta(magemeta);
+				inv.setItem(3, Mage);
+				ItemStack Splitter = new ItemStack(Material.QUARTZ);
+				ItemMeta splitmeta = Mage.getItemMeta();
+				splitmeta.setDisplayName("Splittershop");
+				lore.add("§aFortress§8-§aCombat§8-§aShop");
+				lore.add("§9§m------------------------------");
+				lore.add("§6Shop für Splitter.");
+				lore.add("§6Hier kannst du FCI-Items kaufen");
+				splitmeta.setLore(lore);
+				lore.clear();
+				Splitter.setItemMeta(splitmeta);
+				inv.setItem(5, Splitter);
+				ItemStack Rang1 = new ItemStack(Material.STICK);
+				ItemMeta rang1meta = Rang1.getItemMeta();
+				rang1meta.setDisplayName("Rang 1");
+				Rang1.setItemMeta(rang1meta);
+				inv.setItem(11, Rang1);
+				ItemStack Rang2 = new ItemStack(Material.STICK);
+				ItemMeta rang2meta = Rang2.getItemMeta();
+				rang2meta.setDisplayName("Rang 2");
+				Rang2.setItemMeta(rang2meta);
+				inv.setItem(12, Rang2);
+				p.openInventory(inv);
+			}
+			if(ev.getSlot() == 5){
+				inv = Bukkit.createInventory(null, 18);
+				ItemStack Mage = new ItemStack(Material.PRISMARINE_SHARD);
+				ItemMeta magemeta = Mage.getItemMeta();
+				magemeta.setDisplayName("Magier");
+				lore.add("§aFortress§8-§aCombat§8-§aShop");
+				lore.add("§9§m------------------------------");
+				lore.add("§6Shop für den Magier.");
+				lore.add("§6Hier kannst du Rang-Upgrades kaufen");
+				magemeta.setLore(lore);
+				lore.clear();
+				Mage.setItemMeta(magemeta);
+				inv.setItem(3, Mage);
+				ItemStack Splitter = new ItemStack(Material.QUARTZ);
+				ItemMeta splitmeta = Mage.getItemMeta();
+				splitmeta.setDisplayName("Splittershop");
+				lore.add("§aFortress§8-§aCombat§8-§aShop");
+				lore.add("§9§m------------------------------");
+				lore.add("§6Shop für Splitter.");
+				lore.add("§6Hier kannst du FCI-Items kaufen");
+				splitmeta.setLore(lore);
+				splitmeta.addEnchant(Enchantment.WATER_WORKER, 10, true);
+				splitmeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+				lore.clear();
+				Splitter.setItemMeta(splitmeta);
+				inv.setItem(5, Splitter);
+				p.openInventory(inv);
+			}
+			if(ev.getSlot() == 11){
+				if(clicked.getName().equals("Upgradeshop Mage"));{
+					String rank = dataprovider.getPlayerClass(p);
+					if(rank == "Rang 1"){
+						int money = dataprovider.getMoney(p);
+						if(money >= 100){
+							
+						}
+					}
+				}
+			}
+			ev.setCancelled(true);
+		}
+	}
+	
+	public static void select(Player p){
+	p.getInventory().addItem(new ItemStack(Material.BLAZE_POWDER));
+	p.sendMessage("Rechtsklicke den NPC zum selektieren.");
+	}
+	
 	public static void spawn(Location loc, String name, String Skin){
 	    NPCRegistry registry = CitizensAPI.getNPCRegistry();
 	    NPC npc = registry.createNPC(EntityType.PLAYER, name);
 	    npc.setProtected(true);
+	    npc.data().set(NPC.PLAYER_SKIN_UUID_METADATA, Skin);
 	    npc.spawn(loc);
 	}
 
 
-	private List<String> lore = new LinkedList<String>();
 	
-	public void tphere(Location loc,NPC npc){
-		npc.getEntity().teleport(loc);
-		npc.teleport(loc, TeleportCause.PLUGIN);
+	public static void tphere(Player p){
+		FCIShop.selection.get(p).getEntity().teleport(p.getLocation());
 	}
-	public void tpto(Player p, NPC npc){
-		p.teleport(npc.getEntity());
+	public static void tpto(Player p){
+		p.teleport(FCIShop.selection.get(p).getEntity().getLocation());
 	}
-	public void delete(NPC npc){
+	public static void delete(Player p){
+		NPC npc = FCIShop.selection.get(p);
+		npc.despawn(DespawnReason.REMOVAL);
 		npc.destroy();
+		NPCRegistry reg = CitizensAPI.getNPCRegistry();
+		reg.deregister(npc);
 	}
 	
 	

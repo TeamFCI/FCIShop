@@ -11,8 +11,6 @@ import de.teamfci.fcishop.entity.Haendler;
 import net.citizensnpcs.api.npc.NPC;
 
 public class FCIShop extends JavaPlugin {
-	
-	public static HashMap<Player, Boolean> selectionmode = new HashMap<Player, Boolean>();
 	public static HashMap<Player, NPC> selection = new HashMap<Player, NPC>();
 
 	public void onEnable(){

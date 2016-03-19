@@ -189,16 +189,17 @@ public class Haendler implements Listener {
 		Action ac = ev.getAction();
 		if(ac.equals(Action.RIGHT_CLICK_AIR)){
 			Player p = ev.getPlayer();
-			if(p.getItemInHand().getItemMeta().getLore().get(1).contains("Rechtsklick um zum Spawn zu gelangen"){
+			if(p.getItemInHand().getItemMeta().getLore().get(1).contains("Rechtsklick um zum Spawn zu gelangen")){
 				p.performCommand("spawn");
 				p.setItemInHand(new ItemStack(Material.AIR));
-			}}
+			}
 		}
 		if(ac.equals(Action.RIGHT_CLICK_BLOCK)){
 			Player p = ev.getPlayer();
 			if(p.getItemInHand().getItemMeta().getLore().get(1).contains("Rechtsklick um zum Spawn zu gelangen")){
 				p.performCommand("spawn");
 				p.setItemInHand(new ItemStack(Material.AIR));
+			}
 		}
 	}
 	

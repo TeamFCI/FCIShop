@@ -204,8 +204,8 @@ public class Haendler implements Listener {
 	}
 	
 	public static void select(Player p){
-	p.getInventory().addItem(new ItemStack(Material.BLAZE_POWDER));
-	p.sendMessage("Rechtsklicke den NPC zum selektieren.");
+		p.getInventory().addItem(new ItemStack(Material.BLAZE_POWDER));
+		p.sendMessage("Rechtsklicke den NPC zum selektieren.");
 	}
 	
 	public static void spawn(Location loc, String name, String Skin){

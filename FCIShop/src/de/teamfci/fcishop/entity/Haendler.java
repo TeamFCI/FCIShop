@@ -184,24 +184,7 @@ public class Haendler implements Listener {
 		}
 	}
 	
-	@EventHandler
-	public void onInteract(PlayerInteractEvent ev){
-		Action ac = ev.getAction();
-		if(ac.equals(Action.RIGHT_CLICK_AIR)){
-			Player p = ev.getPlayer();
-			if(p.getItemInHand().getItemMeta().getLore().get(1).contains("Rechtsklick um zum Spawn zu gelangen")){
-				p.performCommand("spawn");
-				p.setItemInHand(new ItemStack(Material.AIR));
-			}
-		}
-		if(ac.equals(Action.RIGHT_CLICK_BLOCK)){
-			Player p = ev.getPlayer();
-			if(p.getItemInHand().getItemMeta().getLore().get(1).contains("Rechtsklick um zum Spawn zu gelangen")){
-				p.performCommand("spawn");
-				p.setItemInHand(new ItemStack(Material.AIR));
-			}
-		}
-	}
+	
 	
 	public static void select(Player p){
 		p.getInventory().addItem(new ItemStack(Material.BLAZE_POWDER));
@@ -215,8 +198,6 @@ public class Haendler implements Listener {
 	    npc.data().set(NPC.PLAYER_SKIN_UUID_METADATA, Skin);
 	    npc.spawn(loc);
 	}
-
-
 	
 	public static void tphere(Player p){
 		FCIShop.selection.get(p).getEntity().teleport(p.getLocation());

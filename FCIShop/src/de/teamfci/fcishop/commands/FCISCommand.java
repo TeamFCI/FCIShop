@@ -22,6 +22,7 @@ public class FCISCommand implements CommandExecutor {
 					p.sendMessage("§f[§bFCIShop§f] /fcis tphere");
 					p.sendMessage("§f[§bFCIShop§f] /fcis tpto");
 					p.sendMessage("§f[§bFCIShop§f] /fcis select");
+					p.sendMessage("§f[§bFCIShop§f] /fcis skin [SkinOwner]");
 				}
 				if(args.length == 1){
 					if(args[0].equalsIgnoreCase("tpto")){
@@ -36,6 +37,7 @@ public class FCISCommand implements CommandExecutor {
 					if(args[0].equalsIgnoreCase("delete")){
 						Haendler.delete(p);
 					}
+					
 				}
 				if(args.length == 3){
 					if(args[0].equalsIgnoreCase("create")){

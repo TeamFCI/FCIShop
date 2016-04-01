@@ -1,5 +1,6 @@
 package de.teamfci.fcishop.entity;
 
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -13,10 +14,8 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.Action;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerInteractEntityEvent;
-import org.bukkit.event.player.PlayerInteractEvent;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -32,6 +31,7 @@ public class Haendler implements Listener {
 	
 	private List<String> lore = new LinkedList<String>();
 	Inventory inv = Bukkit.createInventory(null, 9);
+	HashMap<Player, Inventory> hm = new HashMap<Player, Inventory>();
 	
 	@EventHandler
 	public void onInteract(PlayerInteractEntityEvent ev) {
@@ -68,21 +68,23 @@ public class Haendler implements Listener {
 				lore.clear();
 				Splitter.setItemMeta(splitmeta);
 				inv.setItem(5, Splitter);
-				p.openInventory(inv);
+				hm.put(p, inv);
+				p.openInventory(hm.get(p));
 			}
 		}
 	}
-	//00 01 02 03 04 05 06 07 08
-	//09 10 11 R1 13 R2 15 16 17
+	//00 01 02 MS 04 SS 06 07 08
+	//09 10 11 12 R3 14 15 16 17
 	@EventHandler
 	public void onClick(InventoryClickEvent ev){
 		Inventory clicked = ev.getClickedInventory();
 		Player p = (Player) ev.getWhoClicked();
-		if(clicked.equals(inv)){
+		if(clicked.equals(hm.get(p))){
 			ev.setCancelled(true);
 			if(ev.getRawSlot() == 3){
 				p.playSound(p.getLocation(), Sound.IRONGOLEM_HIT, 100, 1);
 				inv = Bukkit.createInventory(null, 18, "Upgradeshop Magier");
+				//Mageshop
 				ItemStack Mage = new ItemStack(Material.PRISMARINE_SHARD);
 				ItemMeta magemeta = Mage.getItemMeta();
 				magemeta.setDisplayName("Magier");
@@ -96,6 +98,7 @@ public class Haendler implements Listener {
 				lore.clear();
 				Mage.setItemMeta(magemeta);
 				inv.setItem(3, Mage);
+				//Spittershop
 				ItemStack Splitter = new ItemStack(Material.QUARTZ);
 				ItemMeta splitmeta = Mage.getItemMeta();
 				splitmeta.setDisplayName("Splittershop");
@@ -107,21 +110,19 @@ public class Haendler implements Listener {
 				lore.clear();
 				Splitter.setItemMeta(splitmeta);
 				inv.setItem(5, Splitter);
-				ItemStack Rang1 = new ItemStack(Material.STICK);
-				ItemMeta rang1meta = Rang1.getItemMeta();
-				rang1meta.setDisplayName("Upgrade 1: Erfahrener Zauerer");
-				Rang1.setItemMeta(rang1meta);
-				inv.setItem(12, Rang1);
-				ItemStack Rang2 = new ItemStack(Material.STICK);
-				ItemMeta rang2meta = Rang2.getItemMeta();
-				rang2meta.setDisplayName("Upgrade 1: Meister der Zauererei");
-				Rang2.setItemMeta(rang2meta);
-				inv.setItem(14, Rang2);
-				p.openInventory(inv);
+				//Magierorden
+				ItemStack Rang3 = new ItemStack(Material.BLAZE_POWDER);
+				ItemMeta rang3meta = Rang3.getItemMeta();
+				rang3meta.setDisplayName("Upgrade 3: Magierorden");
+				Rang3.setItemMeta(rang3meta);
+				inv.setItem(13, Rang3);
+				hm.put(p, inv);
+				p.openInventory(hm.get(p));
 			} else {
 				if (ev.getRawSlot() == 5) {
 					p.playSound(p.getLocation(), Sound.IRONGOLEM_HIT, 100, 1);
 				inv = Bukkit.createInventory(null, 18, "Splittershop");
+				//Mage
 				ItemStack Mage = new ItemStack(Material.PRISMARINE_SHARD);
 				ItemMeta magemeta = Mage.getItemMeta();
 				magemeta.setDisplayName("Magier");
@@ -133,6 +134,7 @@ public class Haendler implements Listener {
 				lore.clear();
 				Mage.setItemMeta(magemeta);
 				inv.setItem(3, Mage);
+				//Splittershop
 				ItemStack Splitter = new ItemStack(Material.QUARTZ);
 				ItemMeta splitmeta = Mage.getItemMeta();
 				splitmeta.setDisplayName("Splittershop");
@@ -146,31 +148,18 @@ public class Haendler implements Listener {
 				lore.clear();
 				Splitter.setItemMeta(splitmeta);
 				inv.setItem(5, Splitter);
-				p.openInventory(inv);
+				hm.put(p, inv);
+				p.openInventory(hm.get(p));
 			}
 			}
 			
-			if(ev.getSlot() == 12){
+			if(ev.getSlot() == 13){
 				if(clicked.getName().equals("Upgradeshop Magier"));{
 					p.playSound(p.getLocation(), Sound.ORB_PICKUP, 100, 1);
+					p.sendMessage("Du hast den Magierorden kaufen wollen.");
+					p.sendMessage("Dieses Feature: Comming soon!");
 //					String rank = dataprovider.getPlayerClass(p);
 //					if(rank == "Zaubelehrling"){
-//						int money = dataprovider.getMoney(p);
-//						if(money >= 100){
-//						} else {
-//							p.sendMessage("Du benötigst mehr Geld.");
-//						}
-//					} else {
-//						p.sendMessage("Du benötigst einen höheren Rang oder bist bereits in diesem Rang oder höher.");
-//					}
-				}
-			}
-			
-			if(ev.getSlot() == 14){
-				if(clicked.getName().equals("Upgradeshop Magier"));{
-					p.playSound(p.getLocation(), Sound.ORB_PICKUP, 100, 1);
-//					String rank = dataprovider.getPlayerClass(p);
-//					if(rank == "Erfahrener Zauberer"){
 //						int money = dataprovider.getMoney(p);
 //						if(money >= 100){
 //						} else {
@@ -211,6 +200,9 @@ public class Haendler implements Listener {
 		npc.destroy();
 		NPCRegistry reg = CitizensAPI.getNPCRegistry();
 		reg.deregister(npc);
+	}
+	public static void skin(NPC npc, String Skin){
+	    npc.data().set(NPC.PLAYER_SKIN_UUID_METADATA, Skin);
 	}
 	
 	

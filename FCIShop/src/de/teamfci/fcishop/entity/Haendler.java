@@ -46,25 +46,30 @@ public class Haendler implements Listener {
 				p.sendMessage("Du hast den NPC " + npc.getName() + " ausgewählt.");
 			} else {
 				// 00 01 02 #M 04 #S 06 07 08
-				inv = Bukkit.createInventory(null, 9, "Splitter-Shop");
-				ItemStack Mage = new ItemStack(Material.PRISMARINE_SHARD);
+				inv = Bukkit.createInventory(null, 9, "Shopübersicht");
+				//Klassenshop
+				ItemStack Mage = new ItemStack(Material.SKULL, 1, (byte) 3);
 				ItemMeta magemeta = Mage.getItemMeta();
-				magemeta.setDisplayName("Magier");
+				magemeta.setDisplayName("§4§lKlassenshop");
 				lore.add("§aFortress§8-§aCombat§8-§aShop");
 				lore.add("§9§m------------------------------");
-				lore.add("§6Shop für den Magier.");
-				lore.add("§6Hier kannst du Rang-Upgrades kaufen");
+				lore.add("§6§lHier kannst du spezielle Items und Ränge für deine Klasse auswählen");
 				magemeta.setLore(lore);
+				magemeta.addEnchant(Enchantment.WATER_WORKER, 10, true);
+				magemeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				lore.clear();
 				Mage.setItemMeta(magemeta);
+				SkullMeta mtas = (SkullMeta) Mage.getItemMeta();
+				mtas.setOwner("MHF_Question");
+				Mage.setItemMeta(mtas);
 				inv.setItem(3, Mage);
-				ItemStack Splitter = new ItemStack(Material.QUARTZ);
-				ItemMeta splitmeta = Mage.getItemMeta();
-				splitmeta.setDisplayName("Splittershop");
+				//Spittershop
+				ItemStack Splitter = new ItemStack(Material.PRISMARINE_SHARD);
+				ItemMeta splitmeta = Splitter.getItemMeta();
+				splitmeta.setDisplayName("§4§lSpli§6§ltt§4§lershop");
 				lore.add("§aFortress§8-§aCombat§8-§aShop");
 				lore.add("§9§m------------------------------");
-				lore.add("§6Shop für Splitter.");
-				lore.add("§6Hier kannst du FCI-Items kaufen");
+				lore.add("§6§lHier kannst du dir spezielle Items für Blutsplitter besorgen.");
 				splitmeta.setLore(lore);
 				lore.clear();
 				Splitter.setItemMeta(splitmeta);
@@ -84,15 +89,14 @@ public class Haendler implements Listener {
 			ev.setCancelled(true);
 			if(ev.getRawSlot() == 3){
 				p.playSound(p.getLocation(), Sound.IRONGOLEM_HIT, 100, 1);
-				inv = Bukkit.createInventory(null, 18, "Upgradeshop Magier");
-				//Mageshop
+				inv = Bukkit.createInventory(null, 18, "Übersicht der Klassenshops");
+				//Klassenshop
 				ItemStack Mage = new ItemStack(Material.SKULL, 1, (byte) 3);
 				ItemMeta magemeta = Mage.getItemMeta();
-				magemeta.setDisplayName("Magier");
+				magemeta.setDisplayName("§4§lKlassenshop");
 				lore.add("§aFortress§8-§aCombat§8-§aShop");
 				lore.add("§9§m------------------------------");
-				lore.add("§6Shop für den Magier.");
-				lore.add("§6Hier kannst du Rang-Upgrades kaufen");
+				lore.add("§6§lHier kannst du spezielle Items und Ränge für deine Klasse auswählen");
 				magemeta.setLore(lore);
 				magemeta.addEnchant(Enchantment.WATER_WORKER, 10, true);
 				magemeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -103,7 +107,7 @@ public class Haendler implements Listener {
 				Mage.setItemMeta(mtas);
 				inv.setItem(3, Mage);
 				//Spittershop
-				ItemStack Splitter = new ItemStack(Material.QUARTZ);
+				ItemStack Splitter = new ItemStack(Material.PRISMARINE_SHARD);
 				ItemMeta splitmeta = Splitter.getItemMeta();
 				splitmeta.setDisplayName("§4§lSpli§6§ltt§4§lershop");
 				lore.add("§aFortress§8-§aCombat§8-§aShop");
@@ -113,41 +117,42 @@ public class Haendler implements Listener {
 				lore.clear();
 				Splitter.setItemMeta(splitmeta);
 				inv.setItem(5, Splitter);
+				hm.put(p, inv);
+				p.openInventory(hm.get(p));
 //				//Magierorden
 //				ItemStack Rang3 = new ItemStack(Material.BLAZE_POWDER);
 //				ItemMeta rang3meta = Rang3.getItemMeta();
 //				rang3meta.setDisplayName("Upgrade 3: Magierorden");
 //				Rang3.setItemMeta(rang3meta);
 //				inv.setItem(13, Rang3);
-//				hm.put(p, inv);
-//				p.openInventory(hm.get(p));
 			} else {
 				if (ev.getRawSlot() == 5) {
 					p.playSound(p.getLocation(), Sound.IRONGOLEM_HIT, 100, 1);
 				inv = Bukkit.createInventory(null, 18, "Splittershop");
-				//Mage
-				ItemStack Mage = new ItemStack(Material.PRISMARINE_SHARD);
+				//Klassenshop
+				ItemStack Mage = new ItemStack(Material.SKULL, 1, (byte) 3);
 				ItemMeta magemeta = Mage.getItemMeta();
-				magemeta.setDisplayName("Magier");
+				magemeta.setDisplayName("§4§lKlassenshop");
 				lore.add("§aFortress§8-§aCombat§8-§aShop");
 				lore.add("§9§m------------------------------");
-				lore.add("§6Shop für den Magier.");
-				lore.add("§6Hier kannst du Rang-Upgrades kaufen");
+				lore.add("§6§lHier kannst du spezielle Items und Ränge für deine Klasse auswählen");
 				magemeta.setLore(lore);
+				magemeta.addEnchant(Enchantment.WATER_WORKER, 10, true);
+				magemeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				lore.clear();
 				Mage.setItemMeta(magemeta);
+				SkullMeta mtas = (SkullMeta) Mage.getItemMeta();
+				mtas.setOwner("MHF_Question");
+				Mage.setItemMeta(mtas);
 				inv.setItem(3, Mage);
-				//Splittershop
-				ItemStack Splitter = new ItemStack(Material.QUARTZ);
+				//Spittershop
+				ItemStack Splitter = new ItemStack(Material.PRISMARINE_SHARD);
 				ItemMeta splitmeta = Splitter.getItemMeta();
-				splitmeta.setDisplayName("Splittershop");
+				splitmeta.setDisplayName("§4§lSpli§6§ltt§4§lershop");
 				lore.add("§aFortress§8-§aCombat§8-§aShop");
 				lore.add("§9§m------------------------------");
-				lore.add("§6Shop für Splitter.");
-				lore.add("§6Hier kannst du FCI-Items kaufen");
+				lore.add("§6§lHier kannst du dir spezielle Items für Blutsplitter besorgen.");
 				splitmeta.setLore(lore);
-				splitmeta.addEnchant(Enchantment.WATER_WORKER, 10, true);
-				splitmeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
 				lore.clear();
 				Splitter.setItemMeta(splitmeta);
 				inv.setItem(5, Splitter);

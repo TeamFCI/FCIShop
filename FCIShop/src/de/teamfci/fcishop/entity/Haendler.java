@@ -53,7 +53,8 @@ public class Haendler implements Listener {
 				magemeta.setDisplayName("§4§lKlassenshop");
 				lore.add("§aFortress§8-§aCombat§8-§aShop");
 				lore.add("§9§m------------------------------");
-				lore.add("§6§lHier kannst du spezielle Items und Ränge für deine Klasse auswählen");
+				lore.add("§6§lHier kannst du spezielle Items");
+				lore.add("und Ränge für deine Klasse auswählen");
 				magemeta.setLore(lore);
 				magemeta.addEnchant(Enchantment.WATER_WORKER, 10, true);
 				magemeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -69,7 +70,8 @@ public class Haendler implements Listener {
 				splitmeta.setDisplayName("§4§lSpli§6§ltt§4§lershop");
 				lore.add("§aFortress§8-§aCombat§8-§aShop");
 				lore.add("§9§m------------------------------");
-				lore.add("§6§lHier kannst du dir spezielle Items für Blutsplitter besorgen.");
+				lore.add("§6§lHier kannst du dir spezielle");
+				lore.add("Items für Blutsplitter besorgen.");
 				splitmeta.setLore(lore);
 				lore.clear();
 				Splitter.setItemMeta(splitmeta);
@@ -96,7 +98,8 @@ public class Haendler implements Listener {
 				magemeta.setDisplayName("§4§lKlassenshop");
 				lore.add("§aFortress§8-§aCombat§8-§aShop");
 				lore.add("§9§m------------------------------");
-				lore.add("§6§lHier kannst du spezielle Items und Ränge für deine Klasse auswählen");
+				lore.add("§6§lHier kannst du spezielle Items");
+				lore.add("und Ränge für deine Klasse auswählen");
 				magemeta.setLore(lore);
 				magemeta.addEnchant(Enchantment.WATER_WORKER, 10, true);
 				magemeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -112,7 +115,8 @@ public class Haendler implements Listener {
 				splitmeta.setDisplayName("§4§lSpli§6§ltt§4§lershop");
 				lore.add("§aFortress§8-§aCombat§8-§aShop");
 				lore.add("§9§m------------------------------");
-				lore.add("§6§lHier kannst du dir spezielle Items für Blutsplitter besorgen.");
+				lore.add("§6§lHier kannst du dir spezielle");
+				lore.add("Items für Blutsplitter besorgen.");
 				splitmeta.setLore(lore);
 				lore.clear();
 				Splitter.setItemMeta(splitmeta);
@@ -135,7 +139,8 @@ public class Haendler implements Listener {
 				magemeta.setDisplayName("§4§lKlassenshop");
 				lore.add("§aFortress§8-§aCombat§8-§aShop");
 				lore.add("§9§m------------------------------");
-				lore.add("§6§lHier kannst du spezielle Items und Ränge für deine Klasse auswählen");
+				lore.add("§6§lHier kannst du spezielle Items");
+				lore.add("und Ränge für deine Klasse auswählen");
 				magemeta.setLore(lore);
 				magemeta.addEnchant(Enchantment.WATER_WORKER, 10, true);
 				magemeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
@@ -151,7 +156,8 @@ public class Haendler implements Listener {
 				splitmeta.setDisplayName("§4§lSpli§6§ltt§4§lershop");
 				lore.add("§aFortress§8-§aCombat§8-§aShop");
 				lore.add("§9§m------------------------------");
-				lore.add("§6§lHier kannst du dir spezielle Items für Blutsplitter besorgen.");
+				lore.add("§6§lHier kannst du dir spezielle");
+				lore.add("Items für Blutsplitter besorgen.");
 				splitmeta.setLore(lore);
 				lore.clear();
 				Splitter.setItemMeta(splitmeta);

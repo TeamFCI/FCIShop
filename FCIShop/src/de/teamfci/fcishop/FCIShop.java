@@ -18,8 +18,8 @@ public class FCIShop extends JavaPlugin {
 		pm.registerEvents(new PluginEnableListener(), this);
 		pm.registerEvents(new Haendler(), this);
 		FCISCommand cFCISCommand = new FCISCommand();
-		getCommand("fcis").setExecutor(cFCISCommand);
-		getCommand("fortresscombat1shop").setExecutor(cFCISCommand);
+		this.getCommand("fcis").setExecutor(cFCISCommand);
+		this.getCommand("fortresscombat1shop").setExecutor(cFCISCommand);
 	}
 	
 }

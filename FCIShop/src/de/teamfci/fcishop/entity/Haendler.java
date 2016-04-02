@@ -31,7 +31,7 @@ import net.citizensnpcs.api.npc.NPCRegistry;
 public class Haendler implements Listener {
 	
 	private List<String> lore = new LinkedList<String>();
-	Inventory inv = Bukkit.createInventory(null, 9);
+	Inventory inv = null;
 	HashMap<Player, Inventory> hm = new HashMap<Player, Inventory>();
 	
 	@EventHandler
@@ -67,7 +67,7 @@ public class Haendler implements Listener {
 				//Spittershop
 				ItemStack Splitter = new ItemStack(Material.PRISMARINE_SHARD);
 				ItemMeta splitmeta = Splitter.getItemMeta();
-				splitmeta.setDisplayName("§4§lSpli§6§ltt§4§lershop");
+				splitmeta.setDisplayName("§4§lSplittershop");
 				lore.add("§aFortress§8-§aCombat§8-§aShop");
 				lore.add("§9§m------------------------------");
 				lore.add("§6§lHier kannst du dir spezielle");
@@ -112,7 +112,7 @@ public class Haendler implements Listener {
 				//Spittershop
 				ItemStack Splitter = new ItemStack(Material.PRISMARINE_SHARD);
 				ItemMeta splitmeta = Splitter.getItemMeta();
-				splitmeta.setDisplayName("§4§lSpli§6§ltt§4§lershop");
+				splitmeta.setDisplayName("§4§lSplittershop");
 				lore.add("§aFortress§8-§aCombat§8-§aShop");
 				lore.add("§9§m------------------------------");
 				lore.add("§6§lHier kannst du dir spezielle");
@@ -153,7 +153,7 @@ public class Haendler implements Listener {
 				//Spittershop
 				ItemStack Splitter = new ItemStack(Material.PRISMARINE_SHARD);
 				ItemMeta splitmeta = Splitter.getItemMeta();
-				splitmeta.setDisplayName("§4§lSpli§6§ltt§4§lershop");
+				splitmeta.setDisplayName("§4§lSplittershop");
 				lore.add("§aFortress§8-§aCombat§8-§aShop");
 				lore.add("§9§m------------------------------");
 				lore.add("§6§lHier kannst du dir spezielle");

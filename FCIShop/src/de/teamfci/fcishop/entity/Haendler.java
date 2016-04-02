@@ -48,7 +48,7 @@ public class Haendler implements Listener {
 				// 00 01 02 #M 04 #S 06 07 08
 				inv = Bukkit.createInventory(null, 9, "Shopübersicht");
 				//Klassenshop
-				ItemStack Mage = new ItemStack(Material.SKULL, 1, (byte) 3);
+				ItemStack Mage = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
 				ItemMeta magemeta = Mage.getItemMeta();
 				magemeta.setDisplayName("§4§lKlassenshop");
 				lore.add("§aFortress§8-§aCombat§8-§aShop");
@@ -91,7 +91,7 @@ public class Haendler implements Listener {
 				p.playSound(p.getLocation(), Sound.IRONGOLEM_HIT, 100, 1);
 				inv = Bukkit.createInventory(null, 18, "Übersicht der Klassenshops");
 				//Klassenshop
-				ItemStack Mage = new ItemStack(Material.SKULL, 1, (byte) 3);
+				ItemStack Mage = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
 				ItemMeta magemeta = Mage.getItemMeta();
 				magemeta.setDisplayName("§4§lKlassenshop");
 				lore.add("§aFortress§8-§aCombat§8-§aShop");
@@ -130,7 +130,7 @@ public class Haendler implements Listener {
 					p.playSound(p.getLocation(), Sound.IRONGOLEM_HIT, 100, 1);
 				inv = Bukkit.createInventory(null, 18, "Splittershop");
 				//Klassenshop
-				ItemStack Mage = new ItemStack(Material.SKULL, 1, (byte) 3);
+				ItemStack Mage = new ItemStack(Material.SKULL_ITEM, 1, (byte) 3);
 				ItemMeta magemeta = Mage.getItemMeta();
 				magemeta.setDisplayName("§4§lKlassenshop");
 				lore.add("§aFortress§8-§aCombat§8-§aShop");

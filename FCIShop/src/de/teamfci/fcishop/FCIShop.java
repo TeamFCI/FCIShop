@@ -10,6 +10,7 @@ import de.teamfci.fcishop.commands.FCISCommand;
 import de.teamfci.fcishop.entity.Haendler;
 import de.teamfci.fcishop.entity.inventorys.Magier;
 import de.teamfci.fcishop.entity.inventorys.waffenexperte.FirstJoinListener;
+import de.teamfci.fcishop.entity.inventorys.waffenexperte.WEClearCommand;
 import net.citizensnpcs.api.npc.NPC;
 
 public class FCIShop extends JavaPlugin {
@@ -24,7 +25,7 @@ public class FCIShop extends JavaPlugin {
 		FCISCommand cFCISCommand = new FCISCommand();
 		this.getCommand("fcis").setExecutor(cFCISCommand);
 		this.getCommand("fortresscombat1shop").setExecutor(cFCISCommand);
-		this.getCommand("weclear").setExecutor(new FirstJoinListener());
+		this.getCommand("weclear").setExecutor(new WEClearCommand());
 	}
 	
 }

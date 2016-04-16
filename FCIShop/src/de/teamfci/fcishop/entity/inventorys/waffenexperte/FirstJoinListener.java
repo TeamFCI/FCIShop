@@ -15,7 +15,7 @@ import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
 
-public class FirstJoinListener implements Listener, CommandExecutor {
+public class FirstJoinListener implements Listener {
 
 	@EventHandler
 	public void onFirstJoin(PlayerJoinEvent ev) {
@@ -29,26 +29,6 @@ public class FirstJoinListener implements Listener, CommandExecutor {
 		}
 	}
 
-	@Override
-	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		FileConfiguration cfg = YamlConfiguration.loadConfiguration(
-				new File("plugins//Fortress-Combat-System//Fortress-Combat-PvP-System//Klassen//Waffenexperte//config.yml"));
-		if (sender instanceof Player) {
-			Player p = (Player) sender;
-			if (args.length == 1) {
-				for (int i = 1; i < 7; i++) {
-					cfg.set(args[0] + ".tier" + i, false);
-					try {
-						cfg.save(new File("plugins//Fortress-Combat-System//Fortress-Combat-PvP-System//Klassen//Waffenexperte//config.yml"));
-					} catch (IOException e) {
-						e.printStackTrace();
-					}
-				}
-			} else {
-				p.sendMessage("/weclear");
-			}
-		}
-		return false;
-	}
+	
 
 }

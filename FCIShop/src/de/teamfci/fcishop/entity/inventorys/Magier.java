@@ -78,7 +78,11 @@ public class Magier implements Listener {
 		//Magierorden
 		ItemStack Rang3 = new ItemStack(Material.BLAZE_POWDER);
 		ItemMeta rang3meta = Rang3.getItemMeta();
-		rang3meta.setDisplayName("Upgrade 3: Magierorden");
+		rang3meta.setDisplayName("Upgrade 3: §4§lMagierorden");
+		lore.add("§aFortress§8-§aCombat§8-§aShop");
+		lore.add("§9§m------------------------------");
+		lore.add("§5§lKaufen zum Upgraden");
+		
 		Rang3.setItemMeta(rang3meta);
 		inv.setItem(22, Rang3);
 		Haendler.hm.put(p, inv);

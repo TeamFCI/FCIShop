@@ -23,7 +23,7 @@ public class Splittershop implements Listener {
 	static Inventory inv;
 	static Haendler invholder;
 
-	public static void open(Player p, Haendler hae) {
+	public static void open(Player p) {
 		inv = Bukkit.createInventory(null, 18, "Splittershop");
 		p.playSound(p.getLocation(), Sound.IRONGOLEM_HIT, 100, 1);
 		// Klassenshop

@@ -6,3 +6,5 @@ depends: [FCIDataprovider]
 commands:
   fcis:
     description: Zeigt Plugininfo an/shopverwaltung.
+  weclear:
+    description: Clears WE-Tiers

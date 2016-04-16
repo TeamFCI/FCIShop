@@ -92,27 +92,32 @@ public class Haendler implements Listener {
 	public void onClick(InventoryClickEvent ev) {
 		Inventory clicked = ev.getClickedInventory();
 		Player p = (Player) ev.getWhoClicked();
-		if (clicked.equals(hm.get(p))) {
-			ev.setCancelled(true);
-			if (ev.getRawSlot() == 3) {
-				Klassenubersicht.openInv(p);
-			}
-
-			if (ev.getRawSlot() == 5) {
-				Splittershop.open(p, this);
-			}
-
-			if (!clicked.getName().equals("Splittershop")) {
-				if (ev.getRawSlot() == 10) {
-					p.playSound(p.getLocation(), Sound.IRONGOLEM_HIT, 1F, 1F);
-					Magier.openInv(p);
+		try {
+			if (clicked.equals(hm.get(p))) {
+				ev.setCancelled(true);
+				if (ev.getRawSlot() == 3) {
+					Klassenubersicht.openInv(p);
 				}
 
-				if (ev.getRawSlot() == 11) {
-					p.playSound(p.getLocation(), Sound.IRONGOLEM_HIT, 1F, 1F);
-					Waffenexperte.openInv(p);
+				if (ev.getRawSlot() == 5) {
+					Splittershop.open(p);
+				}
+
+				if (!clicked.getName().equals("Splittershop")) {
+					if (ev.getRawSlot() == 10) {
+						p.playSound(p.getLocation(), Sound.IRONGOLEM_HIT, 1F, 1F);
+						Magier.openInv(p);
+					}
+
+					if (ev.getRawSlot() == 11) {
+						p.playSound(p.getLocation(), Sound.IRONGOLEM_HIT, 1F, 1F);
+						Waffenexperte.openInv(p);
+					}
 				}
 			}
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 

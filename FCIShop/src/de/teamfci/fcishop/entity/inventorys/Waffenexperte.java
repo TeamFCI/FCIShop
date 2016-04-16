@@ -19,6 +19,7 @@ import de.teamfci.fcishop.entity.Haendler;
 public class Waffenexperte implements Listener {
 	
 	private static List<String> lore = new LinkedList<String>();
+	
 
 	public static void openInv(Player p) {
 		//Inventar erstellen
@@ -72,6 +73,7 @@ public class Waffenexperte implements Listener {
 		lore.clear();
 		WEshop.setItemMeta(WESMeta);
 		inv.setItem(11, WEshop);
+		ItemStack T1 = new ItemStack(Material.NETHER_STAR);
 		Haendler.hm.put(p, inv);
 		p.openInventory(Haendler.hm.get(p));
 		

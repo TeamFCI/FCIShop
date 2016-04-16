@@ -29,7 +29,6 @@ public class FirstJoinListener implements Listener, CommandExecutor {
 		}
 	}
 
-	@SuppressWarnings("deprecation")
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 		FileConfiguration cfg = YamlConfiguration.loadConfiguration(
@@ -37,9 +36,8 @@ public class FirstJoinListener implements Listener, CommandExecutor {
 		if (sender instanceof Player) {
 			Player p = (Player) sender;
 			if (args.length == 1) {
-				OfflinePlayer pwanted = Bukkit.getOfflinePlayer(args[0]);
 				for (int i = 1; i < 7; i++) {
-					cfg.set(pwanted.getName() + ".tier" + i, false);
+					cfg.set(args[0] + ".tier" + i, false);
 					try {
 						cfg.save(new File("plugins//Fortress-Combat-System//Fortress-Combat-PvP-System//Klassen//Waffenexperte//config.yml"));
 					} catch (IOException e) {
